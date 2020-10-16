@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <div id="region-modal-list" th:fragment="region-modal-list"
+
+        data-result="#tabela-pesquisa"
+        th:attr="data-url='' + @{/region/modal-list}"
+        data-url-query-params='["name=#input-pesquisa"]'
+        data-url-sort="id,asc"
+
+        class="modal fade">
+
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Selecione uma Region</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+					<form method="get" action="javascript:ModalPesquisaRegion.submit()" novalidate>
+						
+                        <div class="form-group">
+                            <label for="input-pesquisa" class="form-label">Nome Region</label>
+                            <input id="input-pesquisa" type="text" class="form-control" placeholder="Entre com sua pesquisa">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-sm min-width-100px">
+                                <i class="fas fa-search before-margin-right-5"></i>
+                                Pesquisar
+                            </button>
+                        </div>
+                        
+                        <div id="tabela-pesquisa" class="form-group min-height-modal-search">
+                            <div th:fragment="tabela-pesquisa">
+                                <div class="table-responsive p-0" th:if="${pageRegion} != null">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 1px;"></th>
+                                                <th style="width: 1px;">ID</th>
+                                                <th>Nome Region</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="region, iterStat : ${pageRegion.content}">
+                                                <td class="coluna-seletora-modal"
+                                                    th:title="'Selecionar '+${region.name}" data-toggle="tooltip"
+                                                    onclick="javascript:RegionModalList.EventoItemSelecionado(this)"
+                                                    th:data-id="${region.id}"
+                                                    th:data-name="${region.name}">
+                                                    <i class="far fa-circle" style="font-size: 20px"></i>
+                                                </td>
+                                                <td th:text="${region.id}"></td>
+                                                <td th:text="${region.name}"></td>
+                                            </tr>
+                                            <tr th:if="${#lists.isEmpty(pageRegion.content)}">
+                                                <td colspan="2" align="center">Nenhum registro encontrado.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div th:if="${pageRegion != null}">
+                                    <div class="d-flex justify-content-center">
+                                        <ul class="pagination form-group">
+                                            <li class="page-item" th:classappend="${pageRegion.first} ? disabled">
+                                                <a th:onclick="'javascript:ModalPesquisaRegion.paginar(1);'" href="javascript:void(0)"
+                                                    class="page-link btn btn-flat" th:classappend="${pageRegion.first} ? disabled">
+                                                    <i class="text-primary fas fa-fast-backward"></i>
+                                                </a>
+                                            </li>
+                                            <li class="page-item" th:classappend="${not pageRegion.previous} ? disabled">
+                                                <a th:onclick="'javascript:ModalPesquisaRegion.paginar(' + ${pageRegion.number-1} + ');'" href="javascript:void(0)"
+                                                    class="page-link btn btn-flat" th:classappend="${not pageRegion.previous} ? disabled">
+                                                    <i class="text-primary fas fa-caret-left"></i>
+                                                </a>
+                                            </li>
+                                            <li th:each="item : ${pageRegion.items}" class="page-item" th:classappend="${item.current} ? active">
+                                                <a th:if='${item.current}' th:text='${item.number}' href="javascript:void(0)" class="page-link btn btn-flat">1</a>
+                                                <a th:if='${not item.current}' th:text='${item.number}' 
+                                                    th:onclick="'javascript:ModalPesquisaRegion.paginar(' + ${item.number} + ');'" href="javascript:void(0)" 
+                                                    class="page-link btn btn-flat">1</a>
+                                            </li>
+                                            <li class="page-item" th:classappend="${not pageRegion.next} ? disabled">
+                                                <a th:onclick="'javascript:ModalPesquisaRegion.paginar(' + ${pageRegion.number+1} + ');'" href="javascript:void(0)"
+                                                    class="page-link btn btn-flat" th:classappend="${not pageRegion.next} ? disabled">
+                                                    <i class="text-primary fas fa-caret-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="page-item" th:classappend="${pageRegion.last} ? disabled">
+                                                <a th:onclick="'javascript:ModalPesquisaRegion.paginar(' + ${pageRegion.totalPages} + ');'" href="javascript:void(0)"
+                                                    class="page-link btn btn-flat" th:classappend="${pageRegion.last} ? disabled">
+                                                    <i class="text-primary fas fa-fast-forward"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- <div class="table-responsive">
+                                    <table class="table table-striped jambo_table" th:if="${page} != null">
+                                        <thead>
+                                            <tr class="headings">
+                                                <th style="width: 1px;"> </th>
+                                                <th class="column-title" th:text="#{cdo.modal.orgaos.id}"></th>
+                                                <th class="column-title" th:text="#{cdo.modal.orgaos.nome}"></th>
+                                                <th class="column-title" th:text="#{cdo.modal.orgaos.sigla}"></th>
+                                            </tr>
+                                        </thead>
+                            
+                                        <tbody>
+                            
+                                            <tr th:each="orgao,iterStat : ${pageRegion.content}" th:class="${iterStat.odd} ? 'odd pointer' : 'even pointer'">
+                                                <td class="coluna-seletora-modal"
+                                                    th:title="'Selecionar '+${orgao.sigla}" data-toggle="tooltip"
+                                                    onclick="javascript:ModalPesquisaOrgaosControle.EventoItemSelecionado(this)"
+                                                    th:data-id="${orgao.id}"
+                                                    th:data-nome="${orgao.nome}"
+                                                    th:data-sigla="${orgao.sigla}">
+                                                    <i class="fa fa-circle-o" style="font-size: 20px"></i>
+                                                </td>
+                                                <td th:text="${orgao.id}"></td>
+                                                <td th:text="${orgao.nome}"></td>
+                                                <td th:text="${orgao.sigla}"></td>
+                                            </tr>
+                            
+                                            <tr th:if="${#lists.isEmpty(page.content)}">
+                                                <td colspan="4" align="center" th:text="#{cdo.modal.orgaos.nenhum.orgao.encontrado}">
+                                                </td>
+                                            </tr>
+                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div th:if="${page} != null">
+                                    <div class="form-inline text-center">
+                                        <nav class="form-group">
+                                            <ul class="pagination  pagination-xs">
+                                                <li th:class="${pageRegion.first} ? 'disabled' : ''">
+                                                    <a th:onclick="'javascript:ModalPesquisaOrgaos.paginar(1);'" href="javascript:void(0)"><div class="fa fa-fast-backward"></div></a>
+                                                </li>
+                                                <li th:class="${not page.previous} ? 'disabled' : ''">
+                                                    <a th:onclick="'javascript:ModalPesquisaOrgaos.paginar(' + ${pageRegion.number-1} + ');'" href="javascript:void(0)"><div class="fa fa-caret-left fa-lg"></div></a>
+                                                </li>
+                                                <li th:each='item,iterStat : ${pageRegion.items}' th:class="${item.current} ? 'active' : ''">
+                                                    <a th:if='${item.current}' th:text='${item.number}' href="javascript:void(0)">1</a>
+                                                    <a th:if='${not item.current}' th:text='${item.number}' th:onclick="'javascript:ModalPesquisaOrgaos.paginar(' + ${item.number} + ');'" href="javascript:void(0)">1</a>
+                                                </li>
+                                                <li th:class="${not page.next}? 'disabled' : ''">
+                                                    <a th:onclick="'javascript:ModalPesquisaOrgaos.paginar(' + ${pageRegion.number+1} + ');'" href="javascript:void(0)"><div class="fa fa-caret-right fa-lg"></div></a>
+                                                </li>
+                                                <li th:class="${pageRegion.last}? 'disabled' : ''">
+                                                    <a th:onclick="'javascript:ModalPesquisaOrgaos.paginar(' + ${pageRegion.totalPages} + ');'" href="javascript:void(0)"><div class="fa fa-fast-forward"></div></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div> -->
+                            </div>                            
+                        </div>
+					</form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

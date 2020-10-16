@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<aside class="main-sidebar sidebar-dark-warning elevation-4" th:fragment="menu">
+		<a th:href="@{/}" class="brand-link">
+			<span class="brand-link-full">
+				<img class="img-brand-link-full" th:src="@{/resources/core-images/logo/logo-negative.png}">
+			</span>
+			<span class="brand-link-simple img-circle">
+				<img class="img-brand-link-simple" th:src="@{/resources/core-images/logo/logo-negative-simple.png}">
+			</span>
+		</a>
+
+		<div class="sidebar">
+
+			<nav class="mt-2">
+				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview"
+					role="menu" data-accordion="false">
+
+					<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							<i class="nav-icon fas fa-globe-americas"></i>
+							<p>
+								Regions
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">	
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/region}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Listar Regions</p>
+								</a>
+							</li>						
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/region/form}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Cadastrar Region</p>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							<i class="nav-icon fas fa-flag"></i>
+							<p>
+								Countries
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/country}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Listar Countries</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/country/form}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Cadastrar Country</p>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							<i class="nav-icon fas fa-map-marker-alt"></i>
+							<p>
+								Locations
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/location}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Listar Locations</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/location/form}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Cadastrar Location</p>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							<i class="nav-icon fas fa-mask"></i>
+							<p>
+								Example Masks
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/example-mask}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Listar Example Masks</p>
+								</a>
+								<a class="nav-link" th:href="@{/example-mask/form}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Cadastrar Example Mask</p>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							<i class="nav-icon fas fa-th"></i>
+							<p>
+								Template
+								<i class="right fas fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/template/dashboard1}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Dashboard 1</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/template/dashboard2}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Dashboard 2</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/template/dashboard3}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Dashboard 3</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/template/ui-elements}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>UI Elements</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/template/buttons}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Buttons</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/template/widgets}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Widgets</p>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/template/profile}">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Profile</p>
+								</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</nav>
+			<!-- /.sidebar-menu -->
+		</div>
+		<!-- /.sidebar -->
+	</aside>
+</body>
+
+</html>

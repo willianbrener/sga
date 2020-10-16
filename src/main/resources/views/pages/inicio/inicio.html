@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{core-layout/layout-pages/layout-master}">
+
+<head>
+<title>Bem-Vindo</title>
+
+</head>
+	<body>
+
+		<th:block layout:fragment="content">
+			<section class="content-header">
+			</section>
+	
+			<section class="content">
+				<div class="container-fluid">
+	
+					<div class="row">
+	
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-header bg-gray-basic">
+									<h3 class="text-dark">
+										Regions
+										<i class="float-right fas fa-globe-americas" style="padding: 5px;"></i>
+									</h3>
+								</div>
+								<div class="card-body p-0">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a th:href="@{/region}" class="nav-link">
+												Listar Regions
+												<i class="float-right fas fa-search" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/region/form}" class="nav-link">
+												Cadastrar Region
+												<i class="float-right fas fa-plus" style="padding: 5px;"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+	
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-header bg-gray-basic">
+									<h3 class="text-dark">
+										Countries
+										<i class="float-right fas fa-flag" style="padding: 5px;"></i>
+									</h3>
+								</div>
+								<div class="card-body p-0">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a th:href="@{/country}" class="nav-link">
+												Listar Countries
+												<i class="float-right fas fa-search" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/country/form}" class="nav-link">
+												Cadastrar Country
+												<i class="float-right fas fa-plus" style="padding: 5px;"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+	
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-header bg-gray-basic">
+									<h3 class="text-dark">
+										Locations
+										<i class="float-right fas fa-map-marker-alt" style="padding: 5px;"></i>
+									</h3>
+								</div>
+								<div class="card-body p-0">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a th:href="@{/location}" class="nav-link">
+												Listar Locations
+												<i class="float-right fas fa-search" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/location/form}" class="nav-link">
+												Cadastrar Location
+												<i class="float-right fas fa-plus" style="padding: 5px;"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-header bg-gray-basic">
+									<h3 class="text-dark">
+										Example Masks
+										<i class="float-right fas fa-mask" style="padding: 5px;"></i>
+									</h3>
+								</div>
+								<div class="card-body p-0">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a th:href="@{/example-mask}" class="nav-link">
+												Listar Example Masks
+												<i class="float-right fas fa-search" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/example-mask/form}" class="nav-link">
+												Cadastrar Example Mask
+												<i class="float-right fas fa-plus" style="padding: 5px;"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-header bg-gray-basic">
+									<h3 class="text-dark">
+										Template
+										<i class="float-right fas fa-th" style="padding: 5px;"></i>
+									</h3>
+								</div>
+								<div class="card-body p-0">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a th:href="@{/template/dashboard1}" class="nav-link">
+												Dashboard 1
+												<i class="float-right fas fa-tachometer-alt" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/template/dashboard2}" class="nav-link">
+												Dashboard 2
+												<i class="float-right fas fa-chart-line" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/template/dashboard3}" class="nav-link">
+												Dashboard 3
+												<i class="float-right fas fa-columns" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/template/ui-elements}" class="nav-link" >
+												UI Elements
+												<i class="float-right fab fa-elementor" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/template/buttons}" class="nav-link" >
+												Buttons
+												<i class="float-right fas fa-file-code" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/template/widgets}" class="nav-link" >
+												Widgets
+												<i class="float-right fas fa-clone" style="padding: 5px;"></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a th:href="@{/template/profile}" class="nav-link" >
+												Profile
+												<i class="float-right fas fa-user-alt" style="padding: 5px;"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+			</section>
+		</th:block>
+
+	</body>
+</html>

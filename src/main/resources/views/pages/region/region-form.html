@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{core-layout/layout-pages/layout-master}">
+
+<head>
+    <title>Cadastrar Region</title>
+    
+    <th:block layout:fragment="self-page-css">
+    </th:block>
+
+</head>
+
+<body>
+    <th:block layout:fragment="content">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <h1 class="text-dark">Regions</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title btn-float-right">
+                                    <i class="fas fa-plus"></i>
+                                    Cadastrar Region
+                                </h3>
+                                <a th:href="@{/region}" class="float-right btn btn-default btn-sm min-width-100px">
+                                    <i class="fas fa-search"></i>
+                                    Pesquisar Regions
+                                </a>
+                            </div>
+                            <form th:action="@{/region/save}" th:object="${region}" method="post">
+
+                                <input type="hidden" th:field="${region.id}"/>
+
+                                <div class="card-body">
+                                    
+                                    <dialect:messages/>
+
+                                    <div class="form-group" >
+                                        <label for="name" class="form-label">Nome</label>
+                                        <input id="name" type="text" class="form-control" 
+                                         th:field="${region.name}" 
+                                         dialect:checkError="${region.name}" />
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="float-right btn btn-primary btn-sm min-width-100px button-loading-body">
+                                        <i class="fas fa-save"></i>
+                                        Salvar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </th:block>
+    
+	<th:block layout:fragment="self-page-javascripts">
+		<!-- JS da página -->
+		<script th:src="@{/resources/pages-js/region/region-form.js}"></script>
+	</th:block>
+</body>
+
+</html>

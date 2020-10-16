@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{core-layout/layout-pages/layout-master}">
+
+<head>
+    <title>Cadastrar Location</title>
+    
+    <th:block layout:fragment="self-page-css">
+    </th:block>
+
+</head>
+
+<body>
+    <th:block layout:fragment="content">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <h1 class="text-dark">Locations</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title btn-float-right">
+                                    <i class="fas fa-plus"></i>
+                                    Cadastrar Location
+                                </h3>
+                                <a th:href="@{/location}" class="float-right btn btn-default btn-sm min-width-100px">
+                                    <i class="fas fa-search"></i>
+                                    Pesquisar Locations
+                                </a>
+                            </div>
+                            <form th:action="@{/location/save}" th:object="${location}" method="post">
+
+                                <input type="hidden" th:field="${location.id}"/>
+
+                                <input id="country-id" type="hidden" th:field="${location.country.id}"/>
+
+                                <div class="card-body">
+                                    
+                                    <dialect:messages/>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group" >
+                                                <label for="streetAddress" class="form-label">Endereço</label>
+                                                <input id="streetAddress" type="text" class="form-control" 
+                                                 th:field="${location.streetAddress}" 
+                                                 dialect:checkError="${location.streetAddress}" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group" >
+                                                <label for="postalCode" class="form-label">CEP</label>
+                                                <input id="postalCode" type="text" class="form-control" 
+                                                 th:field="${location.postalCode}" 
+                                                 dialect:checkError="${location.postalCode}" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group" >
+                                                <label for="city" class="form-label">Cidade</label>
+                                                <input id="city" type="text" class="form-control" 
+                                                 th:field="${location.city}" 
+                                                 dialect:checkError="${location.city}" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group" >
+                                                <label for="city" class="form-label">Estado</label>
+                                                <input id="city" type="text" class="form-control" 
+                                                 th:field="${location.stateProvince}" 
+                                                 dialect:checkError="${location.stateProvince}" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group" >
+                                                <label for="country" class="form-label">Country</label>
+                                                <div class="input-group input-group">
+                                                    <input id="country-name" type="text" class="form-control" readonly
+                                                        th:field="${location.country.name}"
+                                                        dialect:checkError="${location.country.id}">
+                                                    <div class="input-group-append">
+                                                        <span data-toggle="tooltip" title="Clique para selecionar o Country">
+                                                            <button type="button" class="btn btn-default btn-flat" data-toggle="modal" data-target="#region-modal-list"
+                                                                onclick="javascript:ModalPesquisaCountry.show()">
+                                                                <i class="fas fa-search"></i>
+                                                            </button>
+                                                        </span>
+                                                        <span data-toggle="tooltip" title="Clique para limpar o Country selecionado">
+                                                            <button type="button" class="btn btn-danger btn-flat"
+                                                                onclick="javascript:ModalPesquisaCountry.limparDestinos()">
+                                                                <i class="fas fa-times"></i>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="float-right btn btn-primary btn-sm min-width-100px button-loading-body">
+                                        <i class="fas fa-save"></i>
+                                        Salvar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div th:replace="@{pages/country/country-modal-list} :: country-modal-list"></div>
+    </th:block>
+    
+	<th:block layout:fragment="self-page-javascripts">
+		<!-- JS da página -->
+        <script th:src="@{/resources/pages-js/location/location-form.js}"></script>
+        
+		<script th:src="@{/resources/pages-js/country/country-modal-list.js}"></script>
+	</th:block>
+</body>
+
+</html>
